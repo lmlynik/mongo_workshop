@@ -17,11 +17,9 @@ import static com.mongodb.client.model.Filters.*;
 import static com.mongodb.client.model.Updates.*;
 import static java.util.Arrays.asList;
 import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
-import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
+import static org.bson.codecs.configuration.CodecRegistries.fromRegistries
 
-import java.net.UnknownHostException;
 
-import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
 
 public class Main {
     public static void main(String[] args) {
@@ -31,6 +29,9 @@ public class Main {
         );
 
         MongoClientSettings settings = MongoClientSettings.builder()
+                .credential(MongoCredential.createCredential("codementor",
+                        "codementors",
+                        "password".toCharArray()))
                 .codecRegistry(pojoCodecRegistry)
                 .build();
 
